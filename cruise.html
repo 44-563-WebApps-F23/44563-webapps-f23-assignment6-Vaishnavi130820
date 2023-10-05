@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            Cruise Selection
+        </title>
+    </head>
+    <body>
+        <h3>Vaishnavi goes on a cruise</h3>
+        <form>
+            <label>
+                <input type="checkbox" id="SharesCabin" value="True"> Shares Cabin
+            </label>
+            <br>
+            <label>
+                <input type="checkbox" id="Breakfast" value="True"> Breakfast
+            </label>
+            <br>
+            <label>
+                <input type="checkbox" id="PoolPass" value="False"> Pool Pass
+            </label>
+        </form>
+        <br>
+        <button onclick="selectCruise()">Select a cruise</button>
+        <p id="result"></p>
+        <script>
+            let my_cruise = {};
+            function selectCruise() {
+                my_cruise = {};
+                my_cruise.shared = document.getElementById('SharesCabin').checked;
+                my_cruise.breakfast = document.getElementById('Breakfast').checked;
+                my_cruise.pool = document.getElementById('PoolPass').checked;
+                document.getElementById('result').innerHTML = JSON.stringify(my_cruise);
+            }
+        </script>
+
+        <form>
+            <label for="propertyName">Enter the number of days:</label>
+             <input type="text" id="propertyName" value="">
+             <br>
+             <label for="price">Enter price:</label>
+             <input type="text" id="price">
+             <br>
+        </form>
+        <button onclick="updateCruise()">Update the cruise</button>
+        <p id="Results"></p>
+        <script>
+            function selectCruise()
+             {
+                my_cruise = {};
+                my_cruise.shared = document.getElementById('SharesCabin').checked;
+                my_cruise.breakfast = document.getElementById('Breakfast').checked;
+                my_cruise.pool = document.getElementById('PoolPass').checked;
+                document.getElementById('result').innerHTML = JSON.stringify(my_cruise);
+             }
+             function updateCruise(){
+                let daysValue = document.getElementById('propertyName').value;
+                let priceValue = document.getElementById('price').value;
+                my_cruise[daysValue] = parseFloat(priceValue);
+                document.getElementById('Results').innerHTML = JSON.stringify(my_cruise);
+             }
+
+        </script>
+
+    </body>
+</html>

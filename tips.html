@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Tip Calculator</title>
+</head>
+<body>
+    <h3>shows tip amounts Vaishnavi</h3>
+<label for="baseAmount">Enter base amount:</label>
+<input type="number" id="baseAmount" value="50">
+<br>
+<label for="tipPercent">Enter the tip percent:</label>
+<input type="number" id="tipPercent" value="15">
+<br>
+<button onclick="tips()">Show tip</button>
+<p id="result"></p>
+<script>
+    function tips() {
+      
+        var baseValue = document.getElementById('baseAmount').valueAsNumber;
+        var tipValue = document.getElementById('tipPercent').valueAsNumber; 
+        var toShow = "";
+        for (var i = 0; i < 5; i++) {
+            var calculatedTip = baseValue * (tipValue + i * 4) / 100;
+            toShow += (tipValue + i * 4) + "% is $" + calculatedTip.toFixed(2) + "; ";
+        }
+        document.getElementById('result').innerHTML = "Tips are: " + toShow;
+    }
+</script>
+
+<form>
+    <label><input type="radio" name="operation" value="sum" onclick="chooseOp()"> Sum</label>
+    <label><input type="radio" name="operation" value="difference" onclick="chooseOp()"> Difference</label>
+    <label><input type="radio" name="operation" value="product" onclick="chooseOp()"> Product</label>
+</form>
+<p id="Results"></p>
+<script>
+    function chooseOp() {
+        
+        var baseValue = document.getElementById('baseAmount').valueAsNumber;
+        var tipValue = document.getElementById('tipPercent').valueAsNumber;
+        var operation = document.querySelector('input[name="operation"]:checked').value;
+        var result;
+
+        switch (operation) {
+            case 'sum':
+                result = baseValue + tipValue;
+                break;
+            case 'difference':
+                result = baseValue - tipValue;
+                break;
+            case 'product':
+                result = baseValue * tipValue;
+                break;
+            default:
+                result = 'Invalid operation';
+        }
+        document.getElementById("Results").innerHTML = operation + " of " + baseValue + " and " + tipValue + " is " + result;
+    }
+    
+</script>
+
+</body>
+</html>
